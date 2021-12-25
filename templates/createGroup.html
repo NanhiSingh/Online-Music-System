@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Creating new fan group{% endblock %}
+
+{% block content %}
+<h2>Creating new fan group{{groupName}}</h2>
+<div>
+    <form action="{{ url_for('create_group') }}" method="post" autocomplete="off">
+           <div>
+               <input type="text" name="group_name" placeholder="Group name" id="group_name" required>
+           </div>
+            <div>
+                <input type="text" name="fav_artist" placeholder="Favourite artist" id="fav_artist" required>
+            </div>
+            <div>
+                <input type="text" name="description" placeholder="Description" id="description" required>
+            </div>
+            <div>
+                <input type="submit" value="Create">
+            </div>
+        </form>
+</div>
+{% endblock %}

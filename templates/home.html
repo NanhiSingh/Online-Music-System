@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+<p>Welcome back, {{ username }}!</p>
+<div>
+    <p>
+        <form action="{{ url_for('search_songs') }}" method="post" autocomplete="off">
+            <input type="text" name="title" placeholder="Enter song title" id="title" required>
+            <input type="submit" value="Search Songs">
+        </form>
+    </p>
+    <p>
+        <form action="{{ url_for('search_friends') }}" method="post" autocomplete="off">
+             <input type="text" name="name" placeholder="Enter friend name" id="name" required>
+            <input type="submit" value="Search friends">
+        </form>
+    </p>
+    <p>
+        <form action="{{ url_for('search_groups') }}" method="post" autocomplete="off">
+            <input type="text" name="group" placeholder="Enter fan group name" id="group" required>
+            <input type="submit" value="Search fan groups">
+        </form>
+    </p>
+    <p>
+        <form action="{{ url_for('goto_create_group')  }}">
+            <input type="submit" value="Create fan group">
+        </form>
+    </p>
+    <p>
+        <form action="{{ url_for('inbox') }}">
+            <input type="submit" value="Inbox">
+        </form>
+    </p>
+     <p>
+        <form action="{{ url_for('update_form') }}">
+            <input type="submit" value="Update profile">
+        </form>
+    </p>
+    <p>
+        <form action="{{ url_for('generate_report') }}" method="post" autocomplete="off">
+            <input type="text" name="email" placeholder="Enter email" id="email" required>
+            <input type="submit" value="Generate report">
+        </form>
+    </p>
+</div>
+{% endblock %}

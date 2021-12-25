@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}My Friends{% endblock %}
+
+{% block content %}
+<h2>My Friends</h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in friends %}
+            <tr>
+                <td>{{row.full_name}}</td>
+                <td>{{row.email}}</td>
+                <td>
+                    <form action="{{ url_for('msg_friends') }}" method="post">
+                        <input type="hidden" name="email" value="{{row.email}}"required>
+                        <input type="submit" name="message" value="Message">
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ url_for('remove_friends') }}" method="post">
+                        <input type="hidden" name="email" value="{{row.email}}"required>
+                        <input type="submit" name="remove" value="Remove">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

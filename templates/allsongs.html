@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}All Songs{% endblock %}
+
+{% block content %}
+<h2>All Songs</h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Song title</th>
+            <th>Year</th>
+            <th>Album</th>
+            <th>Artist</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in songs %}
+            <tr>
+                <td>{{row.title}}</td>
+                <td>{{row.year}}</td>
+                <td>{{row.album}}</td>
+                <td>{{row.artist}}</td>
+                <td>
+                    <form action="{{ url_for('add_to_fav') }}" method="post">
+                        <input type="hidden" name="title"  id="{{row.title}}" value="{{row.title}}"required>
+                        <input type="hidden" name="year"  id="{{row.year}}" value="{{row.year}}"required>
+                        <input type="submit" name="add" value="Add">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

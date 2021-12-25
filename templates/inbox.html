@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Inbox{% endblock %}
+
+{% block content %}
+<h2>Inbox</h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Date/time</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Subject</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in msg %}
+            <tr>
+                <td>{{row.date_time}}</td>
+                <td>{{row.sender}}</td>
+                <td>{{row.receiver}}</td>
+                <td>{{row.subject}}</td>
+                <td>{{row.body}}</td>
+                <td>
+                    <form action="{{ url_for('remove_msg') }}" method="post">
+                        <input type="hidden" name="date"  id="{{row.date_time}}" value="{{row.date_time}}"required>
+                        <input type="hidden" name="from"  id="{{row.sender}}" value="{{row.sender}}"required>
+                        <input type="hidden" name="to"  id="{{row.receiver}}" value="{{row.receiver}}"required>
+                        <input type="submit" name="remove" value="Remove">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

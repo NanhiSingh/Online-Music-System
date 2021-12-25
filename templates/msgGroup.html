@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}Send email{% endblock %}
+
+{% block content %}
+<h2>Send email to each member in {{groupName}}</h2>
+<div>
+    <form action="{{ url_for('send_msg_group') }}" method="post" autocomplete="off">
+            <p>
+                <input type="hidden" name="groupName"  id="{{groupName}}" value="{{groupName}}"required>
+            </p>
+            <p>
+                <input type="text" name="subject" placeholder="Subject" id="subject" required>
+            </p>
+            <p>
+                <input type="text" name="body" placeholder="Enter message" id="body" required>
+            </p>
+            <p>
+                 <input type="submit" value="Send">
+            </p>
+    </form>
+</div>
+{% endblock %}

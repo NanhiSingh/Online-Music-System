@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}Send email{% endblock %}
+
+{% block content %}
+<h2>Send email to {{email}}</h2>
+<div>
+    <form action="{{ url_for('send_msg_friend') }}" method="post" autocomplete="off">
+
+        <input type="hidden" name="email"  id="{{email}}" value="{{email}}"required>
+
+        <p>
+             <input type="text" name="subject" placeholder="Subject" id="subject" required>
+        </p>
+
+        <p>
+            <input type="text" name="body" placeholder="Enter message" id="body" required>
+        </p>
+
+        <p>
+            <input type="submit" value="Send">
+        </p>
+
+        </form>
+</div>
+{% endblock %}

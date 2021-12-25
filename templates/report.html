@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+<h2>Report</h2>
+<div>
+    <h3>Friends</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in friends %}
+                <tr>
+                    <td>{{row.full_name}}</td>
+                    <td>{{row.email}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <h3>Fan groups joined</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Group name</th>
+                <th>Favourite artist</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in groups %}
+                <tr>
+                    <td>{{row.group_name}}</td>
+                    <td>{{row.favourite_artist}}</td>
+                    <td>{{row.description}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <h3>Messages</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Date/Time</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in msg %}
+                <tr>
+                    <td>{{row.date_time}}</td>
+                    <td>{{row.sender}}</td>
+                    <td>{{row.receiver}}</td>
+                    <td>{{row.subject}}</td>
+                    <td>{{row.body}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

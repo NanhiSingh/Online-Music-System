@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}My fan clubs{% endblock %}
+
+{% block content %}
+<h2>My fan clubs</h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Group Name</th>
+            <th>Favourite Artist</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in groups %}
+            <tr>
+                <td>{{row.group_name}}</td>
+                <td>{{row.favourite_artist}}</td>
+                <td>{{row.description}}</td>
+                <td>
+                    <form action="{{ url_for('msg_group') }}" method="post">
+                        <input type="hidden" name="group_name" value="{{row.group_name}}"required>
+                        <input type="submit" name="message" value="Message">
+                    </form>
+                </td>
+
+                <td>
+                    <form action="{{ url_for('exit_group') }}" method="post">
+                        <input type="hidden" name="group_name" value="{{row.group_name}}"required>
+                        <input type="submit" name="exit" value="Exit">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

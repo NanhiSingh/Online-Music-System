@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Update profile{% endblock %}
+
+{% block content %}
+<h2>Update profile</h2>
+<div>
+    <form action="{{ url_for('update') }}" method="post" autocomplete="off">
+        <p>
+             <input type="text" name="name" placeholder="Enter new name" id="name" required>
+        </p>
+
+        <p>
+            <input type="text" name="password" placeholder="Enter new password" id="password" required>
+        </p>
+
+        <p>
+            <input type="text" name="addr" placeholder="Enter new street address" id="addr" required>
+        </p>
+
+        <p>
+            <input type="submit" value="Update">
+        </p>
+
+    </form>
+</div>
+{% endblock %}

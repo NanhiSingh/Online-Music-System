@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}Searched friends{% endblock %}
+
+{% block content %}
+<h2>Searched friends</h2>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in friends %}
+            <tr>
+                <td>{{row.full_name}}</td>
+                <td>{{row.email}}</td>
+                <td>
+                    <form action="{{ url_for('add_search_friend') }}" method="post">
+                        <input type="hidden" name="keyword"  id="{{keyword}}" value="{{keyword}}"required>
+                        <input type="hidden" name="email"  id="{{row.email}}" value="{{row.email}}"required>
+                        <input type="submit" name="add" value="Add">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
